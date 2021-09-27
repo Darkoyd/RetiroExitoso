@@ -33,16 +33,17 @@ class Restaurante extends Sequelize.Model {
       sequelize,
       paranoid: true,
       hooks: {},
+      timestamps: true
     })
   }
 
   static associate (models) {
     this.hasMany(models.Producto, {
       foreignKey: {
-        name:"id",
+        name:'id_restaurante',
         allowNull: false
       },
-      onDelete: 'restrict'
+      onDelete: 'cascade'
     })
     models.Producto.belongsTo(this)
   }

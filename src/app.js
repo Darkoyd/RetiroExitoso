@@ -35,7 +35,27 @@ app.get('/health', (req, res) => {
 })
 app.use(express.json({strict: false, type: '*/json', limit: 1024*50*1024}))
 
-routeLoader(app)
+
+if (process.env.CURRENT_OS === 'windows') {
+  function loadRoutes(app, routerPath = 'src/routes') {
+    const routes = fs.readdirSync(routerPath)
+    routes.forEach(file => {
+      const filePath = path.join(routerPath,file)
+      const stat = fs.statSync(filePath)
+      if (stat.isDirectory()) {
+        loadRoutes(app, filePath)
+      } else {
+        const route = filePath.replace('src\\routes\\', '/').replace('\\','/').replace('.js', '').replace('index', '')
+        const requireFilePath = path.resolve(filePath)
+        app.use(route, require(requireFilePath))
+      }
+    })
+  }
+  
+  loadRoutes(app)
+} else {
+  routeLoader(app)
+}
 
 app.use((req, res, next) => {
   const err = new Error('Not Found')

@@ -4,7 +4,7 @@
   "description": "TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon ./src/bin/run.js"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,10 @@
     "express-route-autoloader": "^1.0.3",
     "morgan": "^1.10.0",
     "morgan-debug": "^2.0.0",
-    "pg": "^8.7.1",
+    "pg": "^7.9.0",
     "sequelize": "^6.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
   }
 }

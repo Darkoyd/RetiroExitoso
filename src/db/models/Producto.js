@@ -25,18 +25,18 @@ class Producto extends Sequelize.Model {
         type: Sequelize.STRING,
         allowNull: true
       }
+    }, {
+      sequelize,
+      paranoid: true,
+      timestamps: true,
+      hooks: {}
     })
   }
 
   static associate (models) {
-    this.hasOne(models.Restaurante, {
-      foreignKey: {
-        name:"id",
-        allowNull: false
-      },
+    this.belongsTo(models.Restaurante, {
       onDelete: 'restrict'
     })
-    this.belongsTo(models.Producto)
   }
 }
 

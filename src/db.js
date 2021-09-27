@@ -3,14 +3,13 @@ const fs = require('fs')
 const path = require('path')
 const Sequelize = require('sequelize')
 
-const env = process.env.NODE_ENV || 'development'
-const config = require('./db/config')[env]
+const config = require('./db/config')
 
 const db = {}
 const sequelize = new Sequelize(config.database, config.username, config.password, config)
 
 fs
-  .readFileSync('./src/db/models')
+  .readdirSync('./src/db/models')
   .filter(file => {
     return (file.indexOf('.js')>0)
   })
@@ -21,7 +20,7 @@ fs
     debug(`Loaded ${model.name} model`)
   })
 
-Objects.keys(db).forEach(modelName => {
+Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     db[modelName].associate(db)
     debug(`Associated ${modelName}`)

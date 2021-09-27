@@ -6,6 +6,8 @@ const cors = require('cors')
 const express = require('express')
 const logger = require('morgan-debug')
 const debug = require('debug')('BackEnd:Server')
+const fs = require('fs')
+const path = require('path')
 
 const routeLoader = require('express-route-autoloader')
 
@@ -30,9 +32,6 @@ app.use(logger('BackEnd:Requests', 'DONE :method :url :status :res[content-lengt
     return req.originalUrl === '/health'
   }
 }))
-app.get('/health', (req, res) => {
-  res.sendStatus(200)
-})
 app.use(express.json({strict: false, type: '*/json', limit: 1024*50*1024}))
 
 

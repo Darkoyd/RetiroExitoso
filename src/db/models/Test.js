@@ -21,7 +21,7 @@ class Test extends Sequelize.Model {
   static associate (models) {
     this.belongsTo(models.Test, {
       foreignKey: {
-        allowNull: false,
+        allowNull: true,
       },
       onDelete: 'restrict'
     })

@@ -40,7 +40,6 @@ class Restaurante extends Sequelize.Model {
   static associate (models) {
     this.hasMany(models.Producto, {
       foreignKey: {
-        name:'id_restaurante',
         allowNull: false
       },
       onDelete: 'cascade'

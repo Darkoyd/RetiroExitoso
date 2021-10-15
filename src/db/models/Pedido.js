@@ -7,11 +7,12 @@ class Pedido extends Sequelize.Model {
         type: Sequelize.UUID,
         primaryKey: true,
         allowNull: false,
+        defaultValue: Sequelize.UUIDV4,
         unique: true
       },
       subtotal: {
         type: Sequelize.FLOAT,
-        allowNull: false
+        allowNull: true
       },
       tarifa: {
         type: Sequelize.FLOAT,

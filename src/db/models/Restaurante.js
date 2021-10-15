@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 
 class Restaurante extends Sequelize.Model {
-  static init(sequelize) {
+  static init (sequelize) {
     return super.init({
       id: {
         type: Sequelize.UUID,
@@ -26,7 +26,7 @@ class Restaurante extends Sequelize.Model {
         allowNull: true
       },
       calificacion: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.FLOAT,
         allowNull: true
       }
     }, {
@@ -44,7 +44,6 @@ class Restaurante extends Sequelize.Model {
       },
       onDelete: 'cascade'
     })
-    models.Producto.belongsTo(this)
   }
 }
 

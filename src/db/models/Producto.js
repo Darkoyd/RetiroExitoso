@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 
 class Producto extends Sequelize.Model {
-  static init(sequelize) {
+  static init (sequelize) {
     return super.init({
       id: {
         type: Sequelize.UUID,
@@ -34,8 +34,8 @@ class Producto extends Sequelize.Model {
   }
 
   static associate (models) {
-    this.belongsTo(models.Restaurante, {
-      onDelete: 'restrict'
+    this.belongsToMany(models.Pedido, {
+      through: 'ProductoPedido'
     })
   }
 }

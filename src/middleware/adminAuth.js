@@ -20,7 +20,11 @@ module.exports = async function (req, res, next) {
     const validToken = await cognitoService.validToken(token)
     if (validToken.status) {
       req.cognito = validToken.decodedJwt.payload
-      return next()
+      if (validToken.decodedJwt.payload['cognito:groups'] && validToken.decodedJwt.payload['cognito:groups'].includes('Admin_Changua')) {
+        return next()
+      } else {
+        res.status(403).send('Forbidden')
+      }
     } else {
       res.status(401).send('Invalid token')
     }

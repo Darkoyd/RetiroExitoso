@@ -11,7 +11,6 @@ async function validToken(token) {
     const result = await axios.get(
       `https://cognito-idp.${process.env.COGNITO_POOL_REGION}.amazonaws.com/${process.env.COGNITO_POOL_ID}/.well-known/jwks.json`
     );
-    debug(result)
     if (result.status === 200) {
       const pems = {};
       const keys = result.data.keys;

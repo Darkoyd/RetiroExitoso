@@ -35,6 +35,7 @@ app.use(logger('backend:requests', 'DONE :method :url :status :res[content-lengt
 }))
 app.use(express.json({ strict: false, type: '*/json', limit: 1024 * 50 * 1024 }))
 app.use('/v1', require('./middleware/auth'))
+app.use('/admin', require('./middleware/adminAuth'))
 
 if (process.env.CURRENT_OS === 'windows') {
   function loadRoutes (app, routerPath = 'src/routes') {

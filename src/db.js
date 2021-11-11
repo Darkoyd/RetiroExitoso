@@ -1,4 +1,4 @@
-const debug = require('debug')('Backend:DB')
+const debug = require('debug')('backend:DB')
 const fs = require('fs')
 const path = require('path')
 const Sequelize = require('sequelize')

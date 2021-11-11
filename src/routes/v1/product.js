@@ -2,7 +2,7 @@ const debug = require('debug')('backend:routes:restaurant')
 const express = require('express')
 const wrapper = require('express-debug-async-wrap')(debug)
 
-const { Restaurante, Producto } = require(`${process.cwd()}/src/db`)
+const { Producto } = require(`${process.cwd()}/src/db`)
 
 const router = express.Router()
 

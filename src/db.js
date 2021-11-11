@@ -1,4 +1,4 @@
-const debug = require('debug')('BackEnd:DB')
+const debug = require('debug')('Backend:DB')
 const fs = require('fs')
 const path = require('path')
 const Sequelize = require('sequelize')
@@ -11,11 +11,11 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 fs
   .readdirSync('./src/db/models')
   .filter(file => {
-    return (file.indexOf('.js')>0)
+    return (file.indexOf('.js') > 0)
   })
   .forEach(file => {
     const modelPath = path.resolve('./src/db/models', file)
-    let model = require(modelPath)
+    const model = require(modelPath)
     db[model.name] = model.init(sequelize)
     debug(`Loaded ${model.name} model`)
   })

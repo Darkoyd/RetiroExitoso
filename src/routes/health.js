@@ -5,9 +5,7 @@ const wrapper = require('express-debug-async-wrap')(debug)
 const router = express.Router()
 
 router.get('/', wrapper(async (req, res) => {
-  res.status(200).send('ok')
+  res.status(200).send('Ok')
 }))
-
-
 
 module.exports = router

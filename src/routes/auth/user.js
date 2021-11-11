@@ -1,6 +1,6 @@
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js')
 
-const debug = require('debug')('backend:routes:restaurant')
+const debug = require('debug')('backend:routes:user')
 const express = require('express')
 const wrapper = require('express-debug-async-wrap')(debug)
 
@@ -51,6 +51,28 @@ router.post('/signup', wrapper(async (req, res) => {
     }
     let cognitoUser = result.user
     res.status(200).send('Usuario : ' + cognitoUser.getUsername() + ' creado')
+  })
+}))
+
+router.get('/login', wrapper( async (req, res) => {
+  const authData = {
+    Username: req.body.email,
+    Password: req.body.password
+  }
+  const authDetails = new AmazonCognitoIdentity.AuthenticationDetails(authData)
+  const userData = {
+    Username: req.body.email,
+    Pool: userPool
+  }
+  const cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData)
+  cognitoUser.authenticateUser(authDetails, {
+    onSuccess: function(result) {
+      const accessToken = result.getAccessToken().getJwtToken()
+      res.status(200).send(accessToken)
+    },
+    onFailure: function(err) {
+      res.status(401).send(err.message)
+    }
   })
 }))
 

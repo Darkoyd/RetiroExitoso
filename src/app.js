@@ -5,7 +5,7 @@ const rax = require('axios-retry')
 const cors = require('cors')
 const express = require('express')
 const logger = require('morgan-debug')
-const debug = require('debug')('Backend:Server')
+const debug = require('debug')('backend:Server')
 const fs = require('fs')
 const path = require('path')
 
@@ -34,6 +34,7 @@ app.use(logger('backend:requests', 'DONE :method :url :status :res[content-lengt
   }
 }))
 app.use(express.json({ strict: false, type: '*/json', limit: 1024 * 50 * 1024 }))
+app.use('/v1', require('./middleware/auth'))
 
 if (process.env.CURRENT_OS === 'windows') {
   function loadRoutes (app, routerPath = 'src/routes') {

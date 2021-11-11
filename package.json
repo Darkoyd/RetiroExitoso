@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "amazon-cognito-identity-js": "^5.2.3",
+    "aws-sdk": "^2.1026.0",
     "axios": "^0.21.4",
     "axios-retry": "^3.1.9",
     "blocked-at": "^1.2.0",
@@ -26,6 +27,8 @@
     "express": "^4.17.1",
     "express-debug-async-wrap": "^2.0.1",
     "express-route-autoloader": "^1.0.3",
+    "jsonwebtoken": "^8.5.1",
+    "jwk-to-pem": "^2.0.5",
     "morgan": "^1.9.1",
     "morgan-debug": "^2.0.0",
     "pg": "^8.7.1",

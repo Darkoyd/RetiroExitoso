@@ -16,9 +16,9 @@ router.get('/:id', wrapper(async (req, res) => {
   res.status(200).send(restaurant)
 }))
 
-router.post('/', wrapper(async (req, res) => {
-  const newRestaurant = await Restaurante.create(req.body)
-  res.status(200).send(newRestaurant)
-}))
+// router.post('/', wrapper(async (req, res) => {
+//   const newRestaurant = await Restaurante.create(req.body)
+//   res.status(200).send(newRestaurant)
+// }))
 
 module.exports = router

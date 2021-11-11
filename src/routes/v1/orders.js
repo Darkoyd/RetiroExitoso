@@ -6,14 +6,14 @@ const { Producto, Pedido, sequelize } = require(`${process.cwd()}/src/db`)
 
 const router = express.Router()
 
-router.get('/', wrapper(async (req, res) => {
-  const allOrders = await Pedido.findAll()
-  res.status(200).send(allOrders)
-}))
+// router.get('/', wrapper(async (req, res) => {
+//   const allOrders = await Pedido.findAll()
+//   res.status(200).send(allOrders)
+// }))
 
 router.get(':/id', wrapper(async (req, res) => {
   const order = await Pedido.find({
-    where: { id: req.params.id }
+    where: { id: req.params.id } //id usuario para hacer el match con la orden
   })
   res.status(200).send(order)
 }))

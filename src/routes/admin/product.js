@@ -15,12 +15,12 @@ router.get(':/idRestaurante/all', wrapper(async (req, res) => {
   res.status(200).send(products)
 }))
 
-// router.post(':/idRestaurante', wrapper(async (req, res) => {
-//   const product = req.body
-//   product.RestauranteId = req.params.idRestaurante
-//   const newProduct = await Producto.create(product)
-//   res.status(200).send(newProduct)
-// }))
+router.post(':/idRestaurante', wrapper(async (req, res) => {
+  const product = req.body
+  product.RestauranteId = req.params.idRestaurante
+  const newProduct = await Producto.create(product)
+  res.status(200).send(newProduct)
+}))
 
 router.get(':/idProducto', wrapper(async (req, res) => {
   const products = await Producto.find({

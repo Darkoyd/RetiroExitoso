@@ -11,6 +11,11 @@ router.get('/', wrapper(async (req, res) => {
   res.status(200).send(allRestaurants)
 }))
 
+router.get('/:id', wrapper(async (req, res) => {
+  const restaurant = await Restaurante.findOne({id: req.params.id})
+  res.status(200).send(restaurant)
+}))
+
 router.post('/', wrapper(async (req, res) => {
   const newRestaurant = await Restaurante.create(req.body)
   res.status(200).send(newRestaurant)

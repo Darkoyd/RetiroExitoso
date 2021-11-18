@@ -8,7 +8,7 @@
   },
   "scripts": {
     "startWin": "nodemon ./src/bin/runProd.js",
-    "start": "source mac.env && nodemon ./src/bin/run.js"
+    "start": "nodemon ./src/bin/run.js"
   },
   "repository": {
     "type": "git",

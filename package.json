@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project.",
   "main": "index.js",
+  "engines": {
+    "node": "14.16.0"
+  },
   "scripts": {
     "dev": "nodemon ./src/bin/run.js",
     "macDev": "source .env && nodemon ./src/bin/run.js"
